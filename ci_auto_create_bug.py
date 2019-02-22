@@ -46,7 +46,7 @@ if __name__ == "__main__":
   title = "【winserver2012】【CI】{item}每日构建({time})问题".format(item = args['item'], time=datetime.now().strftime("%Y-%m-%d"))
   if "linux" in title:
     title = "【centos6】【CI】{item}每日构建问题".format(item = args['item'])
-  steps = "<p>[步骤]</p><p>CI - 每日构建({time})</p><p>[结果]</p><p>{result}</p><p>[期望]</p><p>0 error, 0 warning.</p>".format(time=datetime.now().strftime("%Y-%m-%d %M:%S"), result=log_result)
+  steps = "<p>[步骤]</p><p>CI - 每日构建({time})</p><p>[结果]</p><p>{result}</p><p>[期望]</p><p>0 error, 0 warning.</p>".format(time=datetime.now().strftime("%Y-%m-%d"), result=log_result)
 
   zentao = ZentaoHelper(args['host'])
   zentao.login(args['username'], args['password'])
