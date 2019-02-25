@@ -26,8 +26,7 @@ if __name__ == "__main__":
   # 从构建日志中提取告警和错误信息
   warnings = [x for x in content if re.findall(r'\(\d+\)\:\swarning', x)]
   errors = [x for x in content if re.findall(r'\(\d+\)\:\serror', x) or (": fatal error" in x)]
-  if len(warnings) == 0 and len(errors) == 0:
-    sys.exit(0)
+  
   log_result = ""
   if warnings:
     log_result += ("<strong>Warnings</strong>: <br />"+''.join(warnings)+"<br />")
@@ -39,6 +38,9 @@ if __name__ == "__main__":
   # 缓存构建结果到文件
   with open(cache_result_filename, 'w+') as f:
     f.write(log_result)
+
+  if len(warnings) == 0 and len(errors) == 0:
+    sys.exit(0)
 
   deadline = datetime.now() + timedelta(days=7)
   deadline = deadline.strftime("%Y-%m-%d")
