@@ -34,7 +34,7 @@ if __name__ == "__main__":
     log_result += ("<strong>Errors</strong>: <br />"+''.join(errors))
   # 如果本次分析出的结果和上次一样，则不重新提BUG
   if cache_result == log_result:
-    sys.exit(1)
+    sys.exit(0)
   # 缓存构建结果到文件
   with open(cache_result_filename, 'w+') as f:
     f.write(log_result)
